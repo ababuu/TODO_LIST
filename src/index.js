@@ -1,6 +1,7 @@
 import './style.css';
 import { openForm, closeForm, openColPopup,closeColPopup, createTaskContainer, personalTask} from './dom-related';
 import {getCollection, getDescription, getTitle,getDate} from './new-task';
+const {differenceInDays} = require("date-fns");
 
 const allContainer=document.querySelector('.all');
 const personalContainer=document.querySelector('.personal');
@@ -38,7 +39,10 @@ submit.addEventListener('click',()=>{
     title= getTitle();
     dueDate=getDate();
     description=getDescription();
-    const newTask=createTaskContainer(title,description,`Due in ${dueDate}`);
+    const today=new Date();
+    const endDate = new Date(dueDate);
+    const daysBetween = differenceInDays(endDate, today);
+    const newTask=createTaskContainer(title,description,`Due in ${daysBetween} days`);
     const newTask_clone=newTask.cloneNode(true)
     if(collection=='personal'){
         personalContainer.appendChild(newTask_clone);
