@@ -1,0 +1,29 @@
+{
+  "name": "TODO_LIST",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ababuu/TODO_LIST.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ababuu/TODO_LIST/issues"
+  },
+  "homepage": "https://github.com/ababuu/TODO_LIST#readme",
+  "devDependencies": {
+    "css-loader": "^6.2.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "date-fns": "^2.23.0"
+  }
+}

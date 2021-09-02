@@ -1,0 +1,309 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: #141116;
+    position: relative;
+    color: lightgray;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+main{
+    position: relative;
+}
+
+
+.side-bar{
+    position: fixed;
+    left: 10px;
+    top:70px;
+    min-height: 70vh;
+    width: 15%;
+    border-radius: 10px;
+    background: #242325;
+
+}
+h4,h5{
+    margin: 40px;
+}
+h4{
+    font-weight: 600;
+}
+h5{
+    font-weight: 400;
+}
+
+.task-container,
+.personal-container,
+.school-container,
+.work-container
+{
+    min-height: 100vh;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 60px;
+    margin-top: 50px;
+}
+
+.task{
+    margin: 20px;
+    margin-top:30px;
+    background: #242325;
+    border-radius: 10px;
+    min-height: 10vh;
+    width: 40%;
+}
+
+.title{
+    width: 100%;
+    height: 35px;
+    background: #424242;
+    border-radius: 10px 10px 0 0;
+    padding-top: 10px;
+    padding-left: 25px;
+}
+.title>h3{
+    margin: 0px ;
+}
+
+.task-detail{
+    position: relative;
+}
+.time-container{
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    font-size: 15px;
+}
+.task-detail>span{
+    position: absolute;
+    top: 13px;
+    font-size: 15px;
+    font-weight: 300;
+    
+}
+.col-form-continer div{
+    position: relative;
+}
+.col-form-continer label{
+    position: absolute;
+    top:15px
+}
+
+/* style for the radio buttons */
+input[type="radio"] {
+    height: 23px;
+    width: 23px;
+    margin: 10px;
+    padding: 0;
+    opacity: 1;
+    appearance: none;
+    border: 2px solid #6b38a9;
+    border-radius: 7px;
+    background: #242325;
+    position: relative;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+input[type="radio"]:checked {
+    border: 2px solid #6b38a9;
+    background: #6b38a9;
+}
+
+input[type="radio"]:checked:before, input[type="radio"]:checked:after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: #fff;
+}
+    
+input[type="radio"]:checked:before {
+    width: 8px;
+    top: 11px;
+    left: 2px;
+    transform: rotate(44deg);
+}
+
+input[type="radio"]:checked:after {
+    width: 14px;
+    top: 8px;
+    left: 5px;
+    transform: rotate(-55deg);
+}
+
+input[type="radio"]:focus {
+    outline: none;
+}
+/* add button */
+.circle {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #6b38a9;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    transition: all .2s ease-in-out;
+}
+.circle:hover{
+    transform: scale(1.1);
+}
+.circle::before {
+    content: "+";
+    height:50px;
+    width:50px;
+    font-size:45px;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-family:courier;
+    color:white;
+}
+
+/* style for the form */
+.formPopup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, 5%);
+    /* box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3); */
+    border-radius: 10px;
+}
+.formContainer {
+    max-width: 350px;
+    padding: 20px;
+    background: #242325;
+    border-radius: 10px;
+}
+.formContainer input[type=text]{
+    width: 100%;
+    min-height: 20vh;
+    padding: 15px;
+    margin: 5px 0 20px 0;
+    border: none;
+    border-radius: 10px;
+    background: #3d3d3d;
+    color: lightgray;
+}
+input[type=date] {
+    width: 100%;
+    min-height: 5vh;
+    padding: 15px;
+    margin: 5px 0 20px 0;
+    border: none;
+    border-radius: 10px;
+    background: #3d3d3d;
+    color: lightgray;
+}
+#title-input{
+    min-height: 5vh !important;
+}
+.formContainer>h2{
+    margin-bottom: 20px ;
+}
+
+.formContainer input[type=text]:focus {
+    background-color: #5e5d5d;
+    outline: none;
+}
+.formContainer .btn {
+    padding: 12px 20px;
+    border: none;
+    background: #3d3d3d;    
+    color: wheat;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+    opacity: 0.8;
+    border-radius: 10px;
+}
+
+.submit:hover{
+    background-color: lightgreen;
+
+}
+
+.formContainer .cancel:hover {
+    background-color: #f06b6b;
+}
+.col-form-continer {
+    max-width: 350px;
+    min-height: 30vh;
+    padding: 20px;
+    background: #242325;
+    border-radius: 10px;
+}
+
+
+
+.col-form-continer .btn {
+    padding: 12px 20px;
+    border: none;
+    background: #3d3d3d;    
+    color: wheat;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+    opacity: 0.8;
+    border-radius: 10px;
+}
+
+.submit:hover{
+    background-color: lightgreen;
+
+}
+
+.col-form-continer .cancel:hover {
+    background-color: #f06b6b;
+}
+
+.choose-collection-popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, 5%);
+    /* box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3); */
+    border-radius: 10px;
+}
+.hide-section{
+    display: none;
+}
+
+.personal-sidebar,
+.school-sidebar,
+.work-sidebar,
+.all-sidebar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3c3b3d;
+    height: 35px;
+    width: 60%;
+    margin: auto;
+    margin-top: 25px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.personal-sidebar:hover,
+.school-sidebar:hover,
+.work-sidebar:hover,
+.all-sidebar:hover{
+    background: #6b38a9;
+}
+.color-change{
+    background: #592a92;
+}

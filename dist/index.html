@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+    <main>
+        
+        <div class="side-bar">
+            <div class="collections"><h4 class="coll">Collections</h4></div>
+            <div class="all-sidebar"><h5>All</h5></div>
+            <div class="personal-sidebar"><h5>Personal</h5></div>
+            <div class="school-sidebar"><h5>School</h5></div>
+            <div class="work-sidebar"><h5>Work</h5></div>
+        </div>
+        <section class="task-container all">
+            
+        </section>
+        <section class="task-container personal hide-section">
+            
+        </section>
+        <section class="task-container school hide-section">
+            
+        </section>
+        <section class="task-container work hide-section">
+            
+        </section>
+        <div id="circle" class="circle open-btn">
+            <span></span>
+        </div>
+        <div class="formPopup" id="popupForm">
+            <div class="formContainer">
+            <h2>Add a Task</h2>
+            <label for="title-input">
+                <strong>Title</strong>
+            </label>
+            <input class="input-title" type="text" id="title-input" placeholder="Task's title" name="task" required>
+            <label for="date-input">
+                <strong>Due Date</strong>
+            </label>
+            <input class="input-date" type="date" id="date-input" placeholder="Due Date" name="task" required>
+            <label for="description-input">
+                <strong>Description</strong>
+            </label>
+            <input class="input-description" type="text" id="description-input" placeholder="Task Description" name="task" required>
+            <button  class="btn submit" ><strong>Submit</strong></button>
+            <button class="btn cancel"><strong>Close</strong></button>
+            </div>
+        </div>
+        <div class="choose-collection-popup" id="popupCol">
+            <div class="col-form-continer">
+                <h2>Choose a Collection</h2>
+                <div>
+                    <input class="personal-radio collection" type="radio" id="personal" name="coll" value="personal">
+                    
+                        <label for="personal">
+                            <strong>Personal</strong>
+                        </label>
+                </div>
+                <div>
+                    <input class="school-radio collection" type="radio" id="school" name="coll" value="school">
+                    
+                        <label for="school">
+                            <strong>School</strong>
+                        </label>
+                </div>
+                <div>
+                    <input class="work-radio collection" type="radio" id="work" name="coll" value="work">
+                    
+                        <label for="work">
+                            <strong>Work</strong>
+                        </label>
+                </div>
+                <button class="btn continue" name="coll"><strong>Continue</strong></button>
+                <button class="btn close-btn" name="coll"><strong>Close</strong></button>
+            </div>
+        </div>
+    </main>
+    <script src="main.js"></script>
+</body>
+
+</html>
