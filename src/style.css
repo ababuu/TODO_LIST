@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Oswald', sans-serif;
 }
 body{
     background: #242325;
     position: relative;
     color: lightgray;
-    font-family: 'Ubuntu', sans-serif;
+    
 }
 
 main{
@@ -60,7 +62,7 @@ h5{
 
 .title{
     width: 100%;
-    height: 35px;
+    height: 40px;
     background: #424242;
     border-radius: 5px 5px 0 0;
     padding-top: 10px;
@@ -68,7 +70,7 @@ h5{
     position: relative;
 }
 .title>h3{
-    margin: 0px ;
+    padding-bottom: 5px !important;
 }
 
 .task-detail{
@@ -214,6 +216,7 @@ input[type=date] {
 .formContainer>h2{
     margin-bottom: 10px ;
 }
+
 .formContainer input[type=text]:focus {
     background-color: #302f2f;
     outline: none;
