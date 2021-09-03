@@ -23,3 +23,8 @@ export function getDate(){
     const date=document.querySelector('.input-date').value;
     return date;
 }
+
+export function getPriority(){
+    const priority=document.querySelector('.priority').value;
+    return priority;
+}

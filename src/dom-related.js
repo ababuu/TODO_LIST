@@ -1,5 +1,5 @@
 
-export function createTaskContainer(title,description,dueDate){
+export function createTaskContainer(title,description,dueDate,priority){
     const container=document.createElement('div');
     container.classList.add('task');
     const titleContainer=document.createElement('div');
@@ -15,6 +15,18 @@ export function createTaskContainer(title,description,dueDate){
     const timeContainer=document.createElement('div');
     timeContainer.classList.add('time-container');
     timeContainer.textContent=dueDate;
+    if(priority=='Urgent'){
+        titleContainer.classList.add('urgent');
+    }
+    else if(priority=='Critical'){
+        titleContainer.classList.add('critical');
+    }
+    else if(priority=='Normal'){
+        titleContainer.classList.add('normal');
+    }
+    else if(priority=='If You Can'){
+        titleContainer.classList.add('if-you-can');
+    }
 
     titleContainer.appendChild(taskTitle);
     taskContainer.appendChild(radioInput);

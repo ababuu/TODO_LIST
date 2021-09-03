@@ -1,7 +1,7 @@
 import './style.css';
-import { openForm, closeForm, openColPopup,closeColPopup, createTaskContainer, personalTask} from './dom-related';
-import {getCollection, getDescription, getTitle,getDate} from './new-task';
-const {differenceInDays} = require("date-fns");
+import { openForm, closeForm, openColPopup,closeColPopup, createTaskContainer,} from './dom-related';
+import {getCollection, getDescription, getTitle,getDate, getPriority} from './new-task';
+const {differenceInDays,differenceInMinutes } = require("date-fns");
 
 const allContainer=document.querySelector('.all');
 const personalContainer=document.querySelector('.personal');
@@ -14,6 +14,7 @@ const personalSidebar=document.querySelector('.personal-sidebar');
 const schoolSidebar=document.querySelector('.school-sidebar');
 const workSidebar=document.querySelector('.work-sidebar');
 
+
 const addBtn=document.querySelector('.circle');
 const closeBtn=document.querySelector('.close-btn');
 const continueBtn=document.querySelector('.continue');
@@ -24,6 +25,7 @@ let description;
 let title;
 let collection;
 let dueDate;
+let priority;
 addBtn.addEventListener('click', ()=>{
     openColPopup();
 })
@@ -39,11 +41,14 @@ submit.addEventListener('click',()=>{
     title= getTitle();
     dueDate=getDate();
     description=getDescription();
+    priority=getPriority();
     const today=new Date();
     const endDate = new Date(dueDate);
     const daysBetween = differenceInDays(endDate, today);
-    const newTask=createTaskContainer(title,description,`Due in ${daysBetween} days`);
-    const newTask_clone=newTask.cloneNode(true)
+    const hoursBetween=differenceInMinutes(endDate,today);
+    console.log(typeof(daysBetween));
+    const newTask=createTaskContainer(title,description,`Due in ${daysBetween} days`,priority);
+    const newTask_clone=newTask.cloneNode(true);
     if(collection=='personal'){
         personalContainer.appendChild(newTask_clone);
         allContainer.appendChild(newTask);
@@ -56,7 +61,6 @@ submit.addEventListener('click',()=>{
         workContainer.appendChild(newTask_clone);
         allContainer.appendChild(newTask);
     }
-    console.log(getDate());
     titleInput.value='';
     descriptionInput.value='';
 });

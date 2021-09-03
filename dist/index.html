@@ -11,7 +11,7 @@
     <main>
         
         <div class="side-bar">
-            <div class="collections"><h4 class="coll">Collections</h4></div>
+            <div class="collections"><span><img src="personal.png" alt=""></span><h4 class="coll">Collections</h4></div>
             <div class="all-sidebar"><h5>All</h5></div>
             <div class="personal-sidebar"><h5>Personal</h5></div>
             <div class="school-sidebar"><h5>School</h5></div>
@@ -47,6 +47,15 @@
                 <strong>Description</strong>
             </label>
             <input class="input-description" type="text" id="description-input" placeholder="Task Description" name="task" required>
+            <label for="priority">
+                <strong>Priority</strong>
+            </label>
+            <select class="priority">
+                <option id="Urgent">Urgent</option>
+                <option id="Critical">Critical</option>
+                <option id="Normal">Normal</option> 
+                <option id="If You Can">If You Can</option>
+            </select>
             <button  class="btn submit" ><strong>Submit</strong></button>
             <button class="btn cancel"><strong>Close</strong></button>
             </div>

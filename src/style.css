@@ -172,11 +172,8 @@ input[type="radio"]:focus {
     display: none;
     position: fixed;
     left: 50%;
-    top: 10%;
+    top: .5%;
     transform: translate(-50%, 5%);
-    /* box-shadow: 
-    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
-    -8px -8px 12px 0 rgba(255, 255, 255, 0.3); */
     border-radius: 10px;
 }
 .formContainer {
@@ -185,9 +182,9 @@ input[type="radio"]:focus {
     background: #242325;
     border-radius: 10px;
 }
-.formContainer input[type=text]{
+.formContainer input[type=text], select{
     width: 100%;
-    min-height: 20vh;
+    min-height: 10vh;
     padding: 15px;
     margin: 5px 0 20px 0;
     border: none;
@@ -205,11 +202,11 @@ input[type=date] {
     background: #3d3d3d;
     color: lightgray;
 }
-#title-input{
+#title-input,select{
     min-height: 5vh !important;
 }
 .formContainer>h2{
-    margin-bottom: 20px ;
+    margin-bottom: 10px ;
 }
 
 .formContainer input[type=text]:focus {
@@ -306,4 +303,16 @@ input[type=date] {
 }
 .color-change{
     background: #592a92;
+}
+.urgent{
+    background: rgb(201, 54, 54);
+}
+.critical{
+    background: rgb(182, 100, 52);
+}
+.normal{
+    background: rgb(216, 216, 72);
+}
+.if-you-can{
+    background: rgb(80, 230, 80);
 }
