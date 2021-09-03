@@ -16,7 +16,17 @@ export function createTaskContainer(title,description,dueDate,priority){
     const taskText=document.createElement('span');
     taskText.textContent=description;
     radioInput.addEventListener('click',()=>{
-        removeElementsByClass(title);
+        let elements = document.getElementsByClassName(title);
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+        let local=JSON.parse(localStorage.getItem('tasks'));
+        for(let i=0;i<local.length;i++){
+            if(local[i]['title']==title){
+                local.splice(i, 1);
+            }
+        }
+        localStorage.setItem('tasks', JSON.stringify(local));
     });
     const editImg=new Image();
     editImg.src=edit;
@@ -39,12 +49,10 @@ export function createTaskContainer(title,description,dueDate,priority){
     delImg.classList.add('delete');
     delImg.addEventListener('click', ()=>{
         let elements = document.getElementsByClassName(title);
-    while(elements.length > 0){
-        elements[0].parentNode.removeChild(elements[0]);
-    }
-    let local=JSON.parse(localStorage.getItem('tasks'));
-    console.log(local);
-    console.log(title);
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+        let local=JSON.parse(localStorage.getItem('tasks'));
         for(let i=0;i<local.length;i++){
             if(local[i]['title']==title){
                 local.splice(i, 1);
@@ -78,16 +86,6 @@ export function createTaskContainer(title,description,dueDate,priority){
     container.appendChild(taskContainer);
     return container;
 }
-
-
-
-
-function removeElementsByClass(className){
-    
-}
-
-
-
 export function openForm() {
     document.getElementById("popupForm").style.display='block';
     closeColPopup();

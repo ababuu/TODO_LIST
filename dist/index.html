@@ -11,11 +11,11 @@
     <main>
         
         <div class="side-bar">
-            <div class="collections"><span><img src="personal.png" alt=""></span><h4 class="coll">Collections</h4></div>
-            <div class="all-sidebar"><h5>All</h5></div>
-            <div class="personal-sidebar"><h5>Personal</h5></div>
-            <div class="school-sidebar"><h5>School</h5></div>
-            <div class="work-sidebar"><h5>Work</h5></div>
+            <div class="collections"><h1 class="coll">Collections</h1></div>
+            <div class="all-sidebar"><h4><strong>All</strong></h4></div>
+            <div class="personal-sidebar"><h4><strong>Personal</strong></h4></div>
+            <div class="school-sidebar"><h4><strong>School</strong></h4></div>
+            <div class="work-sidebar"><h4><strong>Work</strong></h4></div>
         </div>
         <section class="task-container all">
             
@@ -38,7 +38,7 @@
             <label for="title-input">
                 <strong>Title</strong>
             </label>
-            <input class="input-title" type="text" id="title-input" placeholder="Task's title" name="task" required>
+            <input class="input-title" type="text" id="title-input" placeholder="Task's title" name="task" autocomplete="off" maxlength="10" required>
             <label for="date-input">
                 <strong>Due Date</strong>
             </label>
@@ -46,7 +46,7 @@
             <label for="description-input">
                 <strong>Description</strong>
             </label>
-            <input class="input-description" type="text" id="description-input" placeholder="Task Description" name="task" required>
+            <input class="input-description" type="text" id="description-input" placeholder="Task Description" name="task" autocomplete="off" maxlength="55" required>
             <label for="priority">
                 <strong>Priority</strong>
             </label>

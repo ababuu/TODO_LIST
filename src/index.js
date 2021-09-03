@@ -1,7 +1,7 @@
 import './style.css';
 import { openForm, closeForm, openColPopup,closeColPopup, createTaskContainer,} from './dom-related';
 import {getCollection, getDescription, getTitle,getDate, getPriority} from './new-task';
-const {differenceInDays,differenceInMinutes } = require("date-fns");
+const {differenceInDays} = require("date-fns");
 let tasks=[];
 const allContainer=document.querySelector('.all');
 const personalContainer=document.querySelector('.personal');
@@ -37,7 +37,7 @@ continueBtn.addEventListener('click', ()=>{
 })
 submit.addEventListener('click',()=>{
     closeForm();
-    title= getTitle();
+    title= getTitle(); 
     dueDate=getDate();
     description=getDescription();
     priority=getPriority();
