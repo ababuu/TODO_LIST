@@ -2,7 +2,7 @@ import './style.css';
 import { openForm, closeForm, openColPopup,closeColPopup, createTaskContainer,} from './dom-related';
 import {getCollection, getDescription, getTitle,getDate, getPriority} from './new-task';
 const {differenceInDays,differenceInMinutes } = require("date-fns");
-
+let tasks=[];
 const allContainer=document.querySelector('.all');
 const personalContainer=document.querySelector('.personal');
 const schoolContainer=document.querySelector('.school');
@@ -13,19 +13,18 @@ const allSidebar=document.querySelector('.all-sidebar');
 const personalSidebar=document.querySelector('.personal-sidebar');
 const schoolSidebar=document.querySelector('.school-sidebar');
 const workSidebar=document.querySelector('.work-sidebar');
-
-
 const addBtn=document.querySelector('.circle');
 const closeBtn=document.querySelector('.close-btn');
 const continueBtn=document.querySelector('.continue');
 const submit=document.querySelector('.submit');
 const cancel=document.querySelector('.cancel');
-
+let localTask=JSON.parse(localStorage.getItem('tasks'));
 let description;
 let title;
 let collection;
 let dueDate;
 let priority;
+let counter=0;
 addBtn.addEventListener('click', ()=>{
     openColPopup();
 })
@@ -45,9 +44,15 @@ submit.addEventListener('click',()=>{
     const today=new Date();
     const endDate = new Date(dueDate);
     const daysBetween = differenceInDays(endDate, today);
-    const hoursBetween=differenceInMinutes(endDate,today);
-    console.log(typeof(daysBetween));
-    const newTask=createTaskContainer(title,description,`Due in ${daysBetween} days`,priority);
+    tasks.push({title,description,daysBetween,priority,collection});
+    if(localTask){
+        localTask.push({title,description,daysBetween,priority,collection});
+        localStorage.setItem('tasks', JSON.stringify(localTask));
+    }
+    else{
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+    const newTask=createTaskContainer(title,description,daysBetween,priority);
     const newTask_clone=newTask.cloneNode(true);
     if(collection=='personal'){
         personalContainer.appendChild(newTask_clone);
@@ -114,12 +119,30 @@ workSidebar.addEventListener('click', ()=>{
     workSidebar.classList.add('color-change');
 });
 
-
-
-
-
-
-
-
-
-
+window.onload=function(){
+    let localTask=JSON.parse(localStorage.getItem('tasks'));
+    if(localTask!=null){
+        localStorage.setItem('tasks', JSON.stringify(localTask));
+        let x=0;
+        let len=(localTask.length);
+        console.log(len);
+        for(; x<=len; x++){
+            
+                const newTask=createTaskContainer(localTask[x]['title'],localTask[x]['description'],localTask[x]['daysBetween'],localTask[x]['priority']);
+                const newTask_clone=newTask.cloneNode(true);
+                if(localTask[x]['collection']=='personal'){
+                    personalContainer.appendChild(newTask_clone);
+                    allContainer.appendChild(newTask);
+                }
+                else if(localTask[x]['collection']=='school'){
+                    schoolContainer.appendChild(newTask_clone);
+                    allContainer.appendChild(newTask);
+                }
+                else if(localTask[x]['collection']=='work'){
+                    workContainer.appendChild(newTask_clone);
+                    allContainer.appendChild(newTask);
+                }
+        }
+        x=0;
+    } 
+}
