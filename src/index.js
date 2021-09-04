@@ -1,7 +1,7 @@
 import './style.css';
 import { openForm, closeForm, openColPopup,closeColPopup, createTaskContainer,} from './dom-related';
 import {getCollection, getDescription, getTitle,getDate, getPriority} from './new-task';
-const {differenceInDays} = require("date-fns");
+const {differenceInDays,differenceInMinutes} = require("date-fns");
 let tasks=[];
 const allContainer=document.querySelector('.all');
 const personalContainer=document.querySelector('.personal');
@@ -41,19 +41,57 @@ submit.addEventListener('click',()=>{
     dueDate=getDate();
     description=getDescription();
     priority=getPriority();
-    const today=new Date();
+    let today=new Date();
     const endDate = new Date(dueDate);
     const daysBetween = differenceInDays(endDate, today);
-    tasks.push({title,description,daysBetween,priority,collection});
-    if(localTask){
-        localTask.push({title,description,daysBetween,priority,collection});
-        localStorage.setItem('tasks', JSON.stringify(localTask));
+    let newTask;
+    let newTask_clone;
+    console.log(daysBetween);
+    let timeLeft;
+    if(daysBetween<1){
+        
+        let result = differenceInMinutes(
+            endDate,
+            today);
+        let hoursBetween=Math.floor(result/60);
+        if(hoursBetween<=1){
+            timeLeft=`Due in ${hoursBetween} hour`;
+        }
+        else{
+            timeLeft=`Due in ${hoursBetween} hours`;
+        }
+        tasks.push({title,description, timeLeft,priority,collection});
+        newTask=createTaskContainer(title,description,timeLeft,priority);
+        newTask_clone=newTask.cloneNode(true);
+        if(localTask){
+            localTask.push({title,description,timeLeft,priority,collection});
+            localStorage.setItem('tasks', JSON.stringify(localTask));
+        }
+        else{
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
     }
     else{
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        if(daysBetween<=1){
+            timeLeft=`Due in ${daysBetween} day`;
+        }
+        else{
+            timeLeft=`Due in ${daysBetween} days`;
+        }
+        tasks.push({title,description,timeLeft,priority,collection});
+        newTask=createTaskContainer(title,description,timeLeft,priority);
+        newTask_clone=newTask.cloneNode(true);
+        if(localTask){
+            localTask.push({title,description,timeLeft,priority,collection});
+            localStorage.setItem('tasks', JSON.stringify(localTask));
+        }
+        else{
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
     }
-    const newTask=createTaskContainer(title,description,daysBetween,priority);
-    const newTask_clone=newTask.cloneNode(true);
+
+    
+    
     if(collection=='personal'){
         personalContainer.appendChild(newTask_clone);
         allContainer.appendChild(newTask);
@@ -127,8 +165,7 @@ window.onload=function(){
         let len=(localTask.length);
         console.log(len);
         for(; x<=len; x++){
-            
-                const newTask=createTaskContainer(localTask[x]['title'],localTask[x]['description'],localTask[x]['daysBetween'],localTask[x]['priority']);
+                const newTask=createTaskContainer(localTask[x]['title'],localTask[x]['description'],localTask[x]['timeLeft'],localTask[x]['priority']);
                 const newTask_clone=newTask.cloneNode(true);
                 if(localTask[x]['collection']=='personal'){
                     personalContainer.appendChild(newTask_clone);

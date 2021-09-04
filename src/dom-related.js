@@ -62,7 +62,7 @@ export function createTaskContainer(title,description,dueDate,priority){
     });
     const timeContainer=document.createElement('div');
     timeContainer.classList.add('time-container');
-    timeContainer.textContent=`Due in ${dueDate} days`;
+    timeContainer.textContent=dueDate;
     if(priority=='Urgent'){
         titleContainer.classList.add('urgent');
     }
