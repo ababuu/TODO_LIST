@@ -1,4 +1,5 @@
 import "./style.css";
+
 import {
   openForm,
   closeForm,
@@ -36,7 +37,19 @@ let title;
 let collection;
 let dueDate;
 let priority;
-let counter = 0;
+
+// //firebase related
+// const firebaseConfig = {
+//   apiKey: "AIzaSyD0KPBTPKdR6vsbNE1mBjT3kjx5BlyANs0",
+//   authDomain: "todo-app-bc2b9.firebaseapp.com",
+//   projectId: "todo-app-bc2b9",
+//   storageBucket: "todo-app-bc2b9.appspot.com",
+//   messagingSenderId: "75730310534",
+//   appId: "1:75730310534:web:f5a510ae8277c7404c4807"
+// };
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
+
 addBtn.addEventListener("click", () => {
   openColPopup();
 });
@@ -47,7 +60,7 @@ continueBtn.addEventListener("click", () => {
   openForm();
   collection = getCollection();
 });
-submit.addEventListener("click", () => {
+submit.addEventListener("click", async() => {
   closeForm();
   title = getTitle();
   dueDate = getDate();
@@ -58,7 +71,6 @@ submit.addEventListener("click", () => {
   const daysBetween = differenceInDays(endDate, today);
   let newTask;
   let newTask_clone;
-  console.log(daysBetween);
   let timeLeft;
   if (daysBetween < 1) {
     let result = differenceInMinutes(endDate, today);
@@ -104,6 +116,17 @@ submit.addEventListener("click", () => {
     workContainer.appendChild(newTask_clone);
     allContainer.appendChild(newTask);
   }
+  // try {
+  //   const docRef = await addDoc(collection(db, "Tasks"), {
+  //     Title: title,
+  //     Description: description,
+  //     TimeLeft: timeLeft,
+  //     Priority: priority
+  //   });
+  //   console.log("Document written with ID: ", docRef.id);
+  // } catch (e) {
+  //   console.error("Error adding document: ", e);
+  // }
   titleInput.value = "";
   descriptionInput.value = "";
 });
@@ -163,7 +186,7 @@ window.onload = function () {
 
     let len = localTask.length;
     console.log(len);
-    for (; x <= len; x++) {
+    for (let x=0; x <= len; x++) {
       const newTask = createTaskContainer(
         localTask[x]["title"],
         localTask[x]["description"],
@@ -183,4 +206,4 @@ window.onload = function () {
       }
     }
   }
-};
+}
